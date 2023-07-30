@@ -1,0 +1,14 @@
+name: main
+on:
+  push:
+    branches:
+      - 'master'
+jobs:
+  update-server:
+    runs-on: self-hosted
+    name: Update
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - run: cp -r /root/actions-runner/_work/Bk-Arogyam-Website-Django/Bk-Arogyam-Website-Django/* /home/Bk-Arogyam-Website-Django
+      - run: service uwsgi restart
